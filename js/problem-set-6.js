@@ -11,7 +11,11 @@
  */
 
 function sayHello() {
-
+  let canvas = document.getElementById("canvas1");
+  let hello = canvas.getContext("2d");
+  hello.font = "48px Sans-Serif";
+  hello.strokeText("Hello, World!", 10, 50);
+  hello.stroke();
 }
 
 /*
@@ -38,7 +42,57 @@ function sayHello() {
  */
 
 function drawRectangle() {
+  let height;
+  let width;
+  let xCoordinate;
+  let yCoordinate;
+  let canvas = document.getElementById("canvas2");
+  let rectangle = canvas.getContext("2d");
 
+  while(true) {
+    height = Number(prompt("Enter a height that is greater than or equal to 1."));
+    if(Number.isNaN(height) == false && height >= 1 && height <= 512) {
+      break;
+    }
+    if(height === null) {
+      break;
+    }
+  }
+
+  while(true) {
+    width = Number(prompt("Enter a width that is greater than or equal to 1."));
+    if(Number.isNaN(width) == false && width >= 1 && width <= 1024) {
+      break;
+    }
+    if(width === null) {
+      break;
+    }
+  }
+
+  while(true) {
+    xCoordinate = Number(prompt("Enter an x-coordinate that is greater than or equal to 5 for the top left corner of the rectangle."));
+    if(Number.isNaN(xCoordinate) == false && xCoordinate >= 5 && xCoordinate <= 1024) {
+      break;
+    }
+    if(xCoordinate === null) {
+      break;
+    }
+  }
+
+  while(true) {
+    yCoordinate = Number(prompt("Enter an y-coordinate that is greater than or equal to 5 for the top left corner of the rectangle."));
+    if(Number.isNaN(yCoordinate) == false && yCoordinate >= 5 && yCoordinate <= 512) {
+      break;
+    }
+    if(yCoordinate === null) {
+      break;
+    }
+  }
+
+
+  rectangle.clearRect(0, 0, canvas2.width, canvas2.height);
+  rectangle.rect(xCoordinate, yCoordinate, width, height);
+  rectangle.stroke();
 }
 
 /*
@@ -67,7 +121,18 @@ function drawRectangle() {
  */
 
 function drawColoredRectangle() {
+  let color;
+  do {
+    color = prompt("Enter a color.");
+    if(color === null) {
+      break;
+    }
+  } while(color != (black || blue || green || orange || purple || red || yellow))
 
+  let canvas = document.getElementById("canvas3");
+  let rectangle = canvas.getContext("2d");
+  rectangle.rect();
+  rectangle.stroke();
 }
 
 /*
