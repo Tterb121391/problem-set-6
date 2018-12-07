@@ -187,20 +187,26 @@ function drawTriangle() {
   for(let x = 1; x <= 3; x++) {
     while(true) {
       side = Number(prompt("Side " + x + ":"));
-      if(Number.isInteger(side) == true && side > 0) {
+      if(Number.isNaN(side) == false && side > 0) {
         break;
       }
     }
     sides.push(side);
   }
-  let canvas = document.getElementById("canvas4");
-  let triangle = canvas.getContext("2d");
-  triangle.clearRect(0, 0, canvas4.width, canvas4.height);
-  triangle.beginPath();
-  triangle.moveTo(10, 10);
-  triangle.lineTo(10, Math.min(... sides) + 10);
-  triangle.stroke();
-
+  sides.sort(function(a, b){return a-b});
+  if(Math.pow(sides[0], 2) + Math.pow(sides[1], 2) == Math.pow(sides[2], 2)) {
+    let canvas = document.getElementById("canvas4");
+    let triangle = canvas.getContext("2d");
+    triangle.clearRect(0, 0, canvas4.width, canvas4.height);
+    triangle.beginPath();
+    triangle.moveTo(10, 10);
+    triangle.lineTo(10, sides[0] + 10);
+    triangle.lineTo(sides[1] + 10, sides[0] + 10);
+    triangle.lineTo(10, 10);
+    triangle.stroke();
+  } else {
+    alert("That is not a valid right triangle.");
+  }
 }
 
 /*
@@ -223,7 +229,28 @@ function drawTriangle() {
  */
 
 function drawSmileyFace() {
-
+  let radius;
+  while(true) {
+    radius = Number(prompt("Enter a radius."));
+    if(Number.isNaN(radius) == false && radius > 0) {
+      break;
+    }
+  }
+  let canvas = document.getElementById("canvas5");
+  let smile = canvas.getContext("2d");
+  smile.clearRect(0, 0, canvas5.width, canvas5.height);
+  smile.beginPath();
+  smile.arc(radius + 10, radius + 10, radius * 0.7, 0, Math.PI);
+  smile.stroke();
+  smile.beginPath();
+  smile.arc(radius + 10, radius + 10, radius, 0, 2 * Math.PI);
+  smile.stroke();
+  smile.beginPath();
+  smile.arc(radius * 0.65 + 10, radius * 0.5 + 10, radius * 0.1, 0, 2 * Math.PI);
+  smile.stroke();
+  smile.beginPath();
+  smile.arc(radius * 1.35 + 10, radius * 0.5 + 10, radius * 0.1, 0, 2 * Math.PI);
+  smile.stroke();
 }
 
 /*
@@ -245,6 +272,22 @@ function drawSmileyFace() {
  */
 
 function drawStar() {
+  let outerRadius;
+  let innerRadius;
+  while(true) {
+    outerRadius = Number(prompt("Enter an outer radius."));
+    if(Number.isNaN(outerRadius) == false && outerRadius > 0) {
+      break;
+    }
+  }
+  while(true) {
+    innerRadius = Number(prompt("Enter an inner radius. It must be smaller than the outer radius."));
+    if(Number.isNaN(innerRadius) == false && innerRadius > 0 && innerRadius < outerRadius) {
+      break;
+    }
+  }
+  let canvas = document.getElementById("canvas6");
+  let star = canvas.getContext("2d");
 
 }
 
