@@ -89,8 +89,8 @@ function drawRectangle() {
     }
   }
 
-
   rectangle.clearRect(0, 0, canvas2.width, canvas2.height);
+  rectangle.beginPath();
   rectangle.rect(xCoordinate, yCoordinate, width, height);
   rectangle.stroke();
 }
@@ -122,17 +122,34 @@ function drawRectangle() {
 
 function drawColoredRectangle() {
   let color;
-  do {
+  while(true) {
     color = prompt("Enter a color.");
     if(color === null) {
       break;
+    } else if(color === "black") {
+      break;
+    } else if(color === "blue") {
+      break;
+    } else if (color === "green") {
+      break;
+    } else if (color === "orange") {
+      break;
+    } else if (color === "purple") {
+      break;
+    } else if (color === "red") {
+      break;
+    } else if (color === "yellow") {
+      break;
     }
-  } while(color != (black || blue || green || orange || purple || red || yellow))
+  }
 
   let canvas = document.getElementById("canvas3");
-  let rectangle = canvas.getContext("2d");
-  rectangle.rect();
-  rectangle.stroke();
+  let coloredRectangle = canvas.getContext("2d");
+  coloredRectangle.clearRect(0, 0, canvas3.width, canvas3.height);
+  coloredRectangle.beginPath();
+  coloredRectangle.fillStyle = color;
+  coloredRectangle.fillRect(10, 10, 100, 50);
+  coloredRectangle.stroke();
 }
 
 /*
@@ -165,6 +182,24 @@ function drawColoredRectangle() {
  */
 
 function drawTriangle() {
+  let side;
+  let sides = [];
+  for(let x = 1; x <= 3; x++) {
+    while(true) {
+      side = Number(prompt("Side " + x + ":"));
+      if(Number.isInteger(side) == true && side > 0) {
+        break;
+      }
+    }
+    sides.push(side);
+  }
+  let canvas = document.getElementById("canvas4");
+  let triangle = canvas.getContext("2d");
+  triangle.clearRect(0, 0, canvas4.width, canvas4.height);
+  triangle.beginPath();
+  triangle.moveTo(10, 10);
+  triangle.lineTo(10, Math.min(... sides) + 10);
+  triangle.stroke();
 
 }
 
