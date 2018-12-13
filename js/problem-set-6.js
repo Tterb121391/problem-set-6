@@ -291,12 +291,18 @@ function drawStar() {
   let star = canvas.getContext("2d");
   star.clearRect(0, 0, canvas6.width, canvas6.height);
   star.beginPath();
+  let innerPentSide = 2 * innerRadius * Math.sin(0.2 * pi);
+  let outerPentSide = 2 * outerRadius * Math.sin(0.2 * pi);
   star.moveTo(125, 125 - outerRadius);
   star.lineTo(125 + innerRadius * Math.cos(0.3 * pi), 125 - innerRadius * Math.sin(0.3 * pi));
   star.stroke();
   star.lineTo(125 + outerRadius * Math.sin(0.4 * pi), 125 - outerRadius * Math.cos(0.4 * pi));
   star.stroke();
-  star.lineTo(125 + innerRadius * Math.cos(0.2 * pi), 125 + innerRadius * Math.sin(0.1 * pi));
+  star.lineTo(125 + innerRadius * Math.cos(0.1 * pi), 125 + innerRadius * Math.sin(0.1 * pi));  //x - coordinate originally 0.2
+  star.stroke();
+  star.lineTo(125 + outerRadius * Math.sin(0.2 * pi), 125 + outerRadius * Math.cos(0.2 * pi));
+  star.stroke();
+  star.lineTo(125, 125 + innerRadius);
   star.stroke();
 }
 
