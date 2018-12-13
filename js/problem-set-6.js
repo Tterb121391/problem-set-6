@@ -295,14 +295,15 @@ function drawStar() {
   let outerPentSide = 2 * outerRadius * Math.sin(0.2 * pi);
   star.moveTo(125, 125 - outerRadius);
   star.lineTo(125 + innerRadius * Math.cos(0.3 * pi), 125 - innerRadius * Math.sin(0.3 * pi));
-  star.stroke();
   star.lineTo(125 + outerRadius * Math.sin(0.4 * pi), 125 - outerRadius * Math.cos(0.4 * pi));
-  star.stroke();
   star.lineTo(125 + innerRadius * Math.cos(0.1 * pi), 125 + innerRadius * Math.sin(0.1 * pi));  //x - coordinate originally 0.2
-  star.stroke();
   star.lineTo(125 + outerRadius * Math.sin(0.2 * pi), 125 + outerRadius * Math.cos(0.2 * pi));
-  star.stroke();
   star.lineTo(125, 125 + innerRadius);
+  star.lineTo(125 - outerRadius * Math.sin(0.2 * pi), 125 + outerRadius * Math.cos(0.2 * pi));
+  star.lineTo(125 - innerRadius * Math.cos(0.1 * pi), 125 + innerRadius * Math.sin(0.1 * pi));
+  star.lineTo(125 - outerRadius * Math.sin(0.4 * pi), 125 - outerRadius * Math.cos(0.4 * pi));
+  star.lineTo(125 - innerRadius * Math.cos(0.3 * pi), 125 - innerRadius * Math.sin(0.3 * pi));
+  star.lineTo(125, 125 - outerRadius);
   star.stroke();
 }
 
@@ -322,7 +323,13 @@ function drawStar() {
  */
 
 function drawStopSign() {
-
+  let canvas = document.getElementById("canvas7");
+  let stopSign = canvas.getContext("2d");
+  stopSign.clearRect(0, 0, canvas7.width, canvas7.height);
+  stopSign.beginPath();
+  stopSign.moveTo(10 + 40 * Math.sqrt(2), 10);
+  stopSign.lineTo(90 + 40 * Math.sqrt(2), 10);
+  stopSign.stroke();
 }
 
 /*
