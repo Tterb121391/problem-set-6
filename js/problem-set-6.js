@@ -367,6 +367,30 @@ function drawStopSign() {
  */
 
 function drawPyramid() {
+  let side;
+  while(true) {
+    side = Number(prompt("Block length:"));
+    if(Number.isNaN(side) == false) {
+      break;
+    }
+  }
+  let canvas = document.getElementById("canvas8");
+  let pyramid = canvas.getContext("2d");
+  pyramid.clearRect(0, 0, canvas8.width, canvas8.height);
+  pyramid.beginPath();
+  let blocks;
+  let level;
+  for(level = 5; level > 0; level--) {
+    pyramid.moveTo(10 + side * 0.5 * (5 - level), canvas8.height - 10 - side * (5 - level));
+    for(blocks = 0; blocks < level; blocks++) {
+      pyramid.lineTo(10 + side * blocks + side * 0.5 * (5 - level), canvas8.height - 10 - side * (6 - level));
+      pyramid.lineTo(10 + side * (blocks + 1) + side * 0.5 * (5 - level), canvas8.height - 10 - side * (6 - level));
+      pyramid.lineTo(10 + side * (blocks + 1) + side * 0.5 * (5 - level), canvas8.height - 10 - side * (5 - level));
+      pyramid.lineTo(10 + side * blocks + side * 0.5 * (5 - level), canvas8.height - 10 - side * (5 - level));
+      pyramid.moveTo(10 + side * (blocks + 1) + side * 0.5 * (5 - level), canvas8.height - 10 - side * (5 - level));
+    }
+    pyramid.stroke();
+  }
 
 }
 
