@@ -329,6 +329,22 @@ function drawStopSign() {
   stopSign.beginPath();
   stopSign.moveTo(10 + 40 * Math.sqrt(2), 10);
   stopSign.lineTo(90 + 40 * Math.sqrt(2), 10);
+  stopSign.lineTo(90 + 80 * Math.sqrt(2), 10 + 40 * Math.sqrt(2));
+  stopSign.lineTo(90 + 80 * Math.sqrt(2), 90 + 40 * Math.sqrt(2));
+  stopSign.lineTo(90 + 40 * Math.sqrt(2), 90 + 80 * Math.sqrt(2));
+  stopSign.lineTo(10 + 40 * Math.sqrt(2), 90 + 80 * Math.sqrt(2));
+  stopSign.lineTo(10, 90 + 40 * Math.sqrt(2));
+  stopSign.lineTo(10, 10 + 40 * Math.sqrt(2));
+  stopSign.lineTo(10 + 40 * Math.sqrt(2), 10);
+  stopSign.fillStyle = "red";
+  stopSign.fill();
+  stopSign.stroke();
+  stopSign.beginPath();
+  stopSign.fillStyle = "white";
+  stopSign.font = "65px Arial";
+  stopSign.textAlign = "center";
+  stopSign.textBaseline = "middle"
+  stopSign.fillText("STOP", 50 + 40 * Math.sqrt(2), 50 + 40 * Math.sqrt(2));
   stopSign.stroke();
 }
 
