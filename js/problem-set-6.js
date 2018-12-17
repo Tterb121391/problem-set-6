@@ -343,7 +343,7 @@ function drawStopSign() {
   stopSign.fillStyle = "white";
   stopSign.font = "65px Arial";
   stopSign.textAlign = "center";
-  stopSign.textBaseline = "middle"
+  stopSign.textBaseline = "middle";
   stopSign.fillText("STOP", 50 + 40 * Math.sqrt(2), 50 + 40 * Math.sqrt(2));
   stopSign.stroke();
 }
@@ -424,5 +424,45 @@ function drawPyramid() {
  */
 
 function drawHouse() {
-
+  let houseColor;
+  let doorColor;
+  while(true) {
+    houseColor = prompt("House color:");
+    if(houseColor == "blue" || "brown" || "green" || "orange" || "purple" || "red" || "yellow") {
+      break;
+    }
+  }
+  while(true) {
+    doorColor = prompt("Front door color:");
+    if(doorColor == "blue" || "brown" || "green" || "orange" || "purple" || "red" || "yellow") {
+      break;
+    }
+  }
+  let canvas = document.getElementById("canvas9");
+  let house = canvas.getContext("2d");
+  house.moveTo(150, canvas9.height - 450);
+  house.lineTo(150, canvas9.height - 10);
+  house.lineTo(canvas9.width - 150, canvas9.height - 10);
+  house.lineTo(canvas9.width - 150, canvas9.height - 450);
+  house.lineTo(150, canvas9.height - 450);
+  house.fillStyle = houseColor;
+  house.fill();
+  house.stroke();
+  house.beginPath();
+  house.moveTo(150, canvas9.height - 450);
+  house.lineTo(canvas9.width / 2, 10);
+  house.lineTo(canvas9.width - 150, canvas9.height - 450);
+  house.fillStyle = "gray";
+  house.fill();
+  house.stroke();
+  house.beginPath();
+  house.fillStyle = "lightblue";
+  house.moveTo(250, canvas9.width - 400);
+  house.lineTo(330, canvas9.width - 400);
+  house.lineTo(330, canvas9.width - 320);
+  house.lineTo(250, canvas9.width - 320);
+  house.lineTo(250, canvas9.width - 400);
+  house.fill();
+  house.stroke();
+  house.fillRect(canvas9.width - 335, canvas9.height - 400, 79, 79);
 }
