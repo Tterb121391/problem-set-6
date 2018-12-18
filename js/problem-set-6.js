@@ -465,4 +465,5 @@ function drawHouse() {
   house.fill();
   house.stroke();
   house.fillRect(canvas9.width - 335, canvas9.height - 400, 79, 79);
+  
 }
