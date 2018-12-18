@@ -51,48 +51,40 @@ function drawRectangle() {
 
   while(true) {
     height = Number(prompt("Enter a height that is greater than or equal to 1."));
-    if(Number.isNaN(height) == false && height >= 1 && height <= 512) {
-      break;
-    }
-    if(height === null) {
+    if(Number.isNaN(height) == false && height >= 1) {
       break;
     }
   }
 
   while(true) {
     width = Number(prompt("Enter a width that is greater than or equal to 1."));
-    if(Number.isNaN(width) == false && width >= 1 && width <= 1024) {
-      break;
-    }
-    if(width === null) {
+    if(Number.isNaN(width) == false && width >= 1) {
       break;
     }
   }
 
   while(true) {
     xCoordinate = Number(prompt("Enter an x-coordinate that is greater than or equal to 5 for the top left corner of the rectangle."));
-    if(Number.isNaN(xCoordinate) == false && xCoordinate >= 5 && xCoordinate <= 1024) {
-      break;
-    }
-    if(xCoordinate === null) {
+    if(Number.isNaN(xCoordinate) == false && xCoordinate >= 5) {
       break;
     }
   }
 
   while(true) {
     yCoordinate = Number(prompt("Enter an y-coordinate that is greater than or equal to 5 for the top left corner of the rectangle."));
-    if(Number.isNaN(yCoordinate) == false && yCoordinate >= 5 && yCoordinate <= 512) {
-      break;
-    }
-    if(yCoordinate === null) {
+    if(Number.isNaN(yCoordinate) == false && yCoordinate >= 5) {
       break;
     }
   }
 
   rectangle.clearRect(0, 0, canvas2.width, canvas2.height);
   rectangle.beginPath();
-  rectangle.rect(xCoordinate, yCoordinate, width, height);
-  rectangle.stroke();
+  if(width + xCoordinate <= canvas2.width && height + yCoordinate <= canvas2.height) {
+    rectangle.rect(xCoordinate, yCoordinate, width, height);
+    rectangle.stroke();
+  } else {
+    alert("The rectangle will not fit on the canvas.");
+  }
 }
 
 /*
@@ -194,18 +186,20 @@ function drawTriangle() {
     sides.push(side);
   }
   sides.sort(function(a, b){return a-b});
-  if(Math.pow(sides[0], 2) + Math.pow(sides[1], 2) == Math.pow(sides[2], 2)) {
-    let canvas = document.getElementById("canvas4");
-    let triangle = canvas.getContext("2d");
-    triangle.clearRect(0, 0, canvas4.width, canvas4.height);
-    triangle.beginPath();
+  let canvas = document.getElementById("canvas4");
+  let triangle = canvas.getContext("2d");
+  triangle.clearRect(0, 0, canvas4.width, canvas4.height);
+  triangle.beginPath();
+  if(Math.pow(sides[0], 2) + Math.pow(sides[1], 2) != Math.pow(sides[2], 2)) {
+    alert("That is not a valid right triangle.");
+  } else if(10 + sides[0] >= canvas4.width || 10 + sides[1] >= canvas4.height) {
+    alert("The triangle will not fit on the canvas.");
+  } else {
     triangle.moveTo(10, 10);
     triangle.lineTo(10, sides[0] + 10);
     triangle.lineTo(sides[1] + 10, sides[0] + 10);
     triangle.lineTo(10, 10);
     triangle.stroke();
-  } else {
-    alert("That is not a valid right triangle.");
   }
 }
 
@@ -232,7 +226,7 @@ function drawSmileyFace() {
   let radius;
   while(true) {
     radius = Number(prompt("Enter a radius."));
-    if(Number.isNaN(radius) == false && radius > 0) {
+    if(Number.isNaN(radius) == false && radius >= 1 && radius <= 250) {
       break;
     }
   }
@@ -370,7 +364,7 @@ function drawPyramid() {
   let side;
   while(true) {
     side = Number(prompt("Block length:"));
-    if(Number.isNaN(side) == false) {
+    if(Number.isNaN(side) == false && side <= 100) {
       break;
     }
   }
@@ -457,13 +451,42 @@ function drawHouse() {
   house.stroke();
   house.beginPath();
   house.fillStyle = "lightblue";
-  house.moveTo(250, canvas9.width - 400);
-  house.lineTo(330, canvas9.width - 400);
-  house.lineTo(330, canvas9.width - 320);
-  house.lineTo(250, canvas9.width - 320);
-  house.lineTo(250, canvas9.width - 400);
+  house.moveTo(250, canvas9.height - 375);
+  house.lineTo(330, canvas9.height - 375);
+  house.lineTo(330, canvas9.height - 295);
+  house.lineTo(250, canvas9.height - 295);
+  house.lineTo(250, canvas9.height - 375);
+  house.fill();
+  house.moveTo(canvas9.width - 335, canvas9.height - 375);
+  house.lineTo(canvas9.width - 255, canvas9.height - 375);
+  house.lineTo(canvas9.width - 255, canvas9.height - 295);
+  house.lineTo(canvas9.width - 335, canvas9.height - 295);
+  house.lineTo(canvas9.width - 335, canvas9.height - 375);
+  house.fill();
+  house.moveTo(250, canvas9.height - 130);
+  house.lineTo(330, canvas9.height - 130);
+  house.lineTo(330, canvas9.height - 50);
+  house.lineTo(250, canvas9.height - 50);
+  house.lineTo(250, canvas9.height - 130);
+  house.fill();
+  house.moveTo(canvas9.width - 335, canvas9.height - 130);
+  house.lineTo(canvas9.width - 255, canvas9.height - 130);
+  house.lineTo(canvas9.width - 255, canvas9.height - 50);
+  house.lineTo(canvas9.width - 335, canvas9.height - 50);
+  house.lineTo(canvas9.width - 335, canvas9.height - 130);
   house.fill();
   house.stroke();
-  house.fillRect(canvas9.width - 335, canvas9.height - 400, 79, 79);
-  
+  house.beginPath();
+  house.moveTo(canvas9.width / 2 - 50, canvas9.height - 10);
+  house.lineTo(canvas9.width / 2 - 50, canvas9.height - 170);
+  house.lineTo(canvas9.width / 2 + 50, canvas9.height - 170);
+  house.lineTo(canvas9.width / 2 + 50, canvas9.height - 10);
+  house.fillStyle = doorColor;
+  house.fill();
+  house.stroke();
+  house.beginPath();
+  house.arc(canvas9.width / 2 + 35, canvas9.height - 90, 7, 0, 2 * Math.PI);
+  house.fillStyle = "yellow";
+  house.fill();
+  house.stroke();
 }
